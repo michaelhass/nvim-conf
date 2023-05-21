@@ -29,17 +29,6 @@ vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
 
-vim.api.nvim_create_autocmd('BufWritePre', {
-    pattern = '*.go',
-    callback = function()
-        vim.lsp.buf.code_action({ context = { only = { 'source.organizeImports' } }, apply = true })
-    end
-})
-
--- For nvim-tree
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrewPlugin = 1
-
 -- #### PACKER ####
 
 local ensure_packer = function()
@@ -154,6 +143,8 @@ require 'nvim-treesitter.configs'.setup {
 
 -- nvim-tree
 require("nvim-tree").setup()
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrewPlugin = 1
 vim.keymap.set("n", "<leader>ex", ":NvimTreeToggle<CR>")
 
 
@@ -173,3 +164,9 @@ lsp.setup()
 
 -- go
 require('go').setup()
+vim.api.nvim_create_autocmd('BufWritePre', {
+    pattern = '*.go',
+    callback = function()
+        vim.lsp.buf.code_action({ context = { only = { 'source.organizeImports' } }, apply = true })
+    end
+})
