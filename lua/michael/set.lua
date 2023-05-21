@@ -31,3 +31,8 @@ vim.api.nvim_create_autocmd('BufWritePre', {
     vim.lsp.buf.code_action({ context = { only = { 'source.organizeImports' } }, apply = true })
   end
 })
+
+-- For nvim-tree
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrewPlugin = 1
+

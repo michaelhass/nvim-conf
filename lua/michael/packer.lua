@@ -52,4 +52,15 @@ return require('packer').startup(function(use)
           vim.cmd('colorscheme nordic')
       end
   }
+
+  use {
+      'nvim-tree/nvim-tree.lua',
+      requires = {
+          'nvim-tree/nvim-web-devicons', -- optional
+      },
+--[[      config = function()
+          require("nvim-tree").setup {}
+  use('nvim-tree/nvim-tree.lua')
+      end --]]
+  }
 end)
