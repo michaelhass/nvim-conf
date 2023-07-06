@@ -104,6 +104,15 @@ end)
 -- #### PLUGINS ####
 
 -- telescope
+require('telescope').setup {
+    defaults = {
+        preview = {
+            -- treesitter is too slow in large projects
+            treesitter = false 
+        }
+    }
+}
+
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.git_files, {})
@@ -115,14 +124,14 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 -- treesitter
 require 'nvim-treesitter.configs'.setup {
     -- A list of parser names, or "all" (the five listed parsers should always be installed)
-    ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "go" },
+    ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "go", "swift" },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
     sync_install = false,
 
     -- Automatically install missing parsers when entering buffer
     -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
-    auto_install = true,
+    auto_install = false,
 
     -- List of parsers to ignore installing (for "all")
     --  ignore_install = { "javascript" },
